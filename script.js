@@ -99,59 +99,33 @@ setInterval(showTestimonials, 3000);
 // Villa Filter
 function filterVillas(){
 
-  const locationInput = document
+  const input = document
     .getElementById("locationFilter")
     .value
     .toLowerCase();
-
-  const guestInput = document
-    .getElementById("guestFilter")
-    .value;
-
-  const priceInput = document
-    .getElementById("priceFilter")
-    .value;
 
   const villas = document.querySelectorAll(".villa-card");
 
   villas.forEach(villa => {
 
-    const villaLocation = villa.dataset.location.toLowerCase();
-    const villaGuests = parseInt(villa.dataset.guests);
-    const villaPrice = parseInt(villa.dataset.price);
+    const location = villa.dataset.location.toLowerCase();
 
-    // 👉 ADD NAME SEARCH
-    const villaName = villa.querySelector("h3")
+    const name = villa.querySelector("h3")
       .textContent
       .toLowerCase();
 
     let show = true;
 
-    // LOCATION OR NAME SEARCH
     if (
-      locationInput !== "" &&
-      !villaLocation.includes(locationInput) &&
-      !villaName.includes(locationInput)
-    ) {
-      show = false;
-    }
-
-    // GUEST FILTER
-    if (
-      guestInput !== "" &&
-      villaGuests < parseInt(guestInput)
-    ) {
-      show = false;
-    }
-
-    // PRICE FILTER
-    if (
-      priceInput !== "" &&
-      villaPrice < parseInt(priceInput)
-    ) {
+      input !== "" &&
+      !location.includes(input) &&
+      !name.includes(input)
+    ){
       show = false;
     }
 
     villa.style.display = show ? "block" : "none";
+
   });
+
 }
