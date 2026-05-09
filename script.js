@@ -226,16 +226,9 @@ function filterVillas() {
   const villas = document.querySelectorAll(".villa-card");
 
   villas.forEach(villa => {
+    const location = villa.getAttribute("data-location").toLowerCase();
 
-    const location = villa.dataset.location.toLowerCase();
-    const title = villa.querySelector("h3").textContent.toLowerCase();
-    const place = villa.querySelector("p").textContent.toLowerCase();
-
-    if (
-      location.includes(input) ||
-      title.includes(input) ||
-      place.includes(input)
-    ) {
+    if (location.includes(input)) {
       villa.style.display = "block";
     } else {
       villa.style.display = "none";
