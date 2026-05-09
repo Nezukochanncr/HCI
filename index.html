@@ -82,14 +82,24 @@
 
   <!-- SEARCH -->
   <section class="search-section">
-    <h2>Find Your Perfect Villa</h2>
 
-    <div class="filters">
-      <input type="text" id="locationFilter" placeholder="Location">
+  <h2>Find Your Perfect Villa</h2>
 
-      <button onclick="filterVillas()">Search</button>
-    </div>
-  </section>
+  <div class="filters">
+
+    <input
+      type="text"
+      id="locationFilter"
+      placeholder="Search location or villa name..."
+      onkeyup="filterVillas()">
+
+    <button onclick="filterVillas()">
+      Search
+    </button>
+
+  </div>
+
+</section>
 
   <!-- VILLAS -->
  <section class="villas" id="villas">
