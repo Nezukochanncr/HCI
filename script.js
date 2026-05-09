@@ -1,69 +1,99 @@
-// 30 villas data
-const villas = Array.from({ length: 30 }, (_, i) => ({
-  name: "Luxury Villa " + (i + 1),
-  location: ["Cavite", "Batangas", "Laguna", "Boracay"][i % 4],
-  price: 5000 + i * 200,
-  image: `https://picsum.photos/400/300?random=${i}`,
-  liked: false
-}));
+// script.js
 
-const container = document.getElementById("villaContainer");
+// Loader
+window.addEventListener("load", () => {
+  document.querySelector(".loader").style.display = "none";
+});
 
-// render villas
-function displayVillas(data) {
-  container.innerHTML = "";
-  data.forEach((v, i) => {
-    container.innerHTML += `
-      <div class="villa-card">
-        <img src="${v.image}">
-        <div class="heart" onclick="toggleHeart(${i})">❤️</div>
-        <div class="villa-info">
-          <h3>${v.name}</h3>
-          <p>${v.location}</p>
-          <p>⭐⭐⭐⭐⭐</p>
-          <p>₱${v.price}/night</p>
-          <button>Book Now</button>
-        </div>
-      </div>
-    `;
+// Mobile Navbar
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+});
+
+// Gallery Lightbox
+const galleryImages = document.querySelectorAll(".gallery-img");
+const lightbox = document.querySelector(".lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
+const closeBtn = document.querySelector(".close");
+
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
   });
-}
+});
 
-displayVillas(villas);
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
 
-// filter
-function filterVillas() {
-  const value = document.getElementById("searchInput").value.toLowerCase();
-  const filtered = villas.filter(v =>
-    v.location.toLowerCase().includes(value)
-  );
-  displayVillas(filtered);
-}
+// Booking Form Validation
+const bookingForm = document.getElementById("bookingForm");
 
-// heart
-function toggleHeart(i) {
-  villas[i].liked = !villas[i].liked;
-  displayVillas(villas);
-}
-
-// navbar
-function toggleMenu() {
-  const nav = document.getElementById("nav");
-  nav.style.display = nav.style.display === "flex" ? "none" : "flex";
-}
-
-// lightbox
-function openLightbox(img) {
-  document.getElementById("lightbox").style.display = "flex";
-  document.getElementById("lightboxImg").src = img.src;
-}
-
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
-
-// booking
-function submitBooking(e) {
+bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  alert("Booking Submitted Successfully!");
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  if(name === "" || email === ""){
+    alert("Please fill in all required fields.");
+  } else {
+    alert("Booking submitted successfully!");
+    bookingForm.reset();
+  }
+});
+
+// Testimonials Slider
+let testimonials = document.querySelectorAll(".testimonial");
+let index = 0;
+
+function showTestimonials(){
+  testimonials.forEach(t => t.classList.remove("active"));
+
+  testimonials[index].classList.add("active");
+
+  index++;
+
+  if(index >= testimonials.length){
+    index = 0;
+  }
+}
+
+setInterval(showTestimonials, 3000);
+
+// Villa Filter
+function filterVillas(){
+
+  const location = document.getElementById("locationFilter").value.toLowerCase();
+  const guests = document.getElementById("guestFilter").value;
+  const price = document.getElementById("priceFilter").value;
+
+  const villas = document.querySelectorAll(".villa-card");
+
+  villas.forEach(villa => {
+
+    const villaLocation = villa.dataset.location.toLowerCase();
+    const villaGuests = villa.dataset.guests;
+    const villaPrice = villa.dataset.price;
+
+    let show = true;
+
+    if(location && !villaLocation.includes(location)){
+      show = false;
+    }
+
+    if(guests && villaGuests !== guests){
+      show = false;
+    }
+
+    if(price && villaPrice < price){
+      show = false;
+    }
+
+    villa.style.display = show ? "block" : "none";
+  });
 }
