@@ -1,421 +1,167 @@
-/* =====================
-   RESET
-===================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial;
   scroll-behavior: smooth;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #f8f9fa;
-  color: #222;
+  background: #f8f9ff;
 }
 
-/* =====================
-   LOADER
-===================== */
-.loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #012b45;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  z-index: 9999;
-}
-
-/* =====================
-   NAVBAR
-===================== */
-.navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
+/* HEADER */
+header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 8%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-.logo {
-  color: #fff;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-
-.nav-links a {
-  text-decoration: none;
+  padding: 15px 40px;
+  background: #003b5c;
   color: white;
-  transition: 0.3s;
+  position: sticky;
+  top: 0;
 }
 
-.nav-links a:hover {
-  color: gold;
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
 }
 
 .hamburger {
   display: none;
-  color: white;
-  font-size: 25px;
   cursor: pointer;
 }
 
-/* =====================
-   HERO
-===================== */
+/* HERO */
 .hero {
-  height: 100vh;
-  background: url("https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1200&auto=format&fit=crop")
-    center/cover;
-  position: relative;
+  height: 90vh;
+  background: url("https://picsum.photos/1600/900?villa") center/cover;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
-}
-
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .hero-content {
-  position: relative;
-  color: white;
-  z-index: 2;
-}
-
-.hero-content h1 {
-  font-size: 60px;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.btn {
-  background: gold;
-  color: black;
-  padding: 12px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-}
-
-/* =====================
-   SEARCH + SUGGESTIONS
-===================== */
-.search-box {
-  position: relative;
-}
-
-.suggestions {
-  position: absolute;
-  background: white;
-  width: 300px;
-  max-height: 200px;
-  overflow-y: auto;
+  background: rgba(0,0,0,0.5);
+  padding: 30px;
   border-radius: 10px;
-  margin-top: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  display: none;
-  z-index: 1000;
 }
 
-.suggestions div {
+.search-box input {
   padding: 10px;
-  cursor: pointer;
+  width: 250px;
+  margin-top: 10px;
 }
 
-.suggestions div:hover {
-  background: #f1f1f1;
-}
-
-/* =====================
-   VILLAS
-===================== */
-.villas h2 {
-  text-align: center;
-  font-size: 60px;
-  font-family: Optima, sans-serif;
-  color: white;
-  letter-spacing: 4px;
-  margin-bottom: 50px;
-}
-
-.villa-container {
+/* VILLAS */
+.villa-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 20px;
 }
 
 .villa-card {
-  background: rgba(17, 28, 46, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: white;
+  border-radius: 10px;
   overflow: hidden;
-  transition: 0.3s;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.villa-card:hover {
-  transform: translateY(-10px);
+  position: relative;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .villa-card img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
 }
 
 .villa-info {
-  padding: 20px;
-  color: white;
-}
-
-.villa-info button {
-  margin-top: 15px;
-  background: #012b45;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* =====================
-   HEART + STARS
-===================== */
-.top-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 8px 0 12px;
-}
-
-.stars {
-  color: gold;
+  padding: 10px;
 }
 
 .heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
-  color: white;
-  transition: 0.3s;
 }
 
-.heart.active {
-  color: red;
-}
-
-/* =====================
-   AMENITIES
-===================== */
-.amenities-container {
+/* AMENITIES */
+.amenities {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
   text-align: center;
 }
 
-.amenity {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  transition: 0.3s;
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
 }
 
-.amenity:hover {
-  background: #012b45;
-  color: white;
-}
-
-.amenity i {
-  font-size: 40px;
-  margin-bottom: 15px;
-  color: gold;
-}
-
-/* =====================
-   GALLERY
-===================== */
-.gallery h2 {
-  text-align: center;
-  font-size: 55px;
-  font-family: Optima, sans-serif;
-  margin-bottom: 40px;
-}
-
-.gallery-container img {
+.gallery img {
   width: 100%;
-  border-radius: 15px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.gallery-container img:hover {
-  transform: scale(1.05);
-}
-
-/* =====================
-   LIGHTBOX
-===================== */
-.lightbox {
-  display: none;
+/* LIGHTBOX */
+#lightbox {
   position: fixed;
-  z-index: 9999;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
 }
 
-.lightbox-img {
-  width: 80%;
-  max-width: 800px;
+#lightbox img {
+  width: 60%;
 }
 
-.lightbox .close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-/* =====================
-   BOOKING + PAYMENT
-===================== */
-.booking form {
+/* FORM */
+form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 500px;
-  margin: auto;
+  padding: 20px;
+  gap: 10px;
 }
 
-.booking input,
-.booking button {
-  padding: 15px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-.booking button {
-  background: #012b45;
-  color: white;
-  cursor: pointer;
-}
-
-.payment {
-  margin-top: 20px;
-}
-
-.payment input {
-  width: 100%;
+button {
   padding: 10px;
-  margin: 5px 0;
+  background: #003b5c;
+  color: white;
+  border: none;
 }
 
-/* =====================
-   CHATBOT
-===================== */
+/* CHATBOT */
 .chatbot {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999;
-}
-
-.chat-btn {
-  width: 60px;
-  height: 60px;
+  background: gold;
+  padding: 15px;
   border-radius: 50%;
-  background: #1e90ff;
-  color: white;
-  border: none;
-  font-size: 22px;
   cursor: pointer;
 }
 
-.chat-box {
-  width: 300px;
-  height: 400px;
-  background: white;
-  position: absolute;
-  bottom: 80px;
-  right: 0;
-  border-radius: 10px;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* =====================
-   CONTACT
-===================== */
-.contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-}
-
-/* =====================
-   FOOTER
-===================== */
-footer {
-  background: #012b45;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-/* =====================
-   RESPONSIVE
-===================== */
+/* MOBILE */
 @media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 80px;
-    right: -100%;
+  nav {
+    display: none;
     flex-direction: column;
-    background: #012b45;
-    width: 250px;
-    padding: 20px;
-    transition: 0.3s;
-  }
-
-  .nav-links.active {
-    right: 0;
   }
 
   .hamburger {
     display: block;
   }
 
-  .hero-content h1 {
-    font-size: 40px;
-  }
-
-  .contact-container {
+  .amenities {
     grid-template-columns: 1fr;
   }
 }
