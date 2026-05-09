@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Complete Your Booking</h1>
+  </header>
+
+  <form id="bookingForm">
+
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="date" required>
+    <input type="number" placeholder="Number of Guests" required>
+
+    <button type="submit">SUBMIT BOOKING</button>
+
+  </form>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Booking submitted successfully! Check your email for confirmation.");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
