@@ -13,6 +13,34 @@ body{
   color:#222;
 }
 
+.toast-success{
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+
+  background: rgba(1, 43, 69, 0.95);
+  color: #fff;
+
+  padding: 16px 20px;
+  border-radius: 12px;
+
+  font-size: 14px;
+  max-width: 300px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+
+  z-index: 9999;
+}
+
+.toast-success.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Loader */
 .loader{
   position:fixed;
