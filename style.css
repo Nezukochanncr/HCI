@@ -218,10 +218,13 @@ body{
 }
 
 /* Gallery */
-.gallery-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
+.gallery h2{
+  text-align:center;
+  font-size:55px;
+  font-family:Optima, sans-serif;
+  color:#111;
+  margin-bottom:40px;
+  font-weight:bold;
 }
 
 .gallery-container img{
