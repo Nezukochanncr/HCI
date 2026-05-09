@@ -67,5 +67,57 @@ setInterval(showTestimonials, 3000);
 // Villa Filter
 function filterVillas(){
 
+  function filterVillas() {
+
+  const locationInput = document
+    .getElementById("locationFilter")
+    .value
+    .trim()
+    .toLowerCase();
+
+  const guestInput = document.getElementById("guestFilter").value;
+
+  const priceInput = document.getElementById("priceFilter").value;
+
+  const villas = document.querySelectorAll(".villa-card");
+
+  villas.forEach(villa => {
+
+    const villaLocation = villa.dataset.location.toLowerCase();
+
+    const villaGuests = parseInt(villa.dataset.guests);
+
+    const villaPrice = parseInt(villa.dataset.price);
+
+    let show = true;
+
+    // LOCATION SEARCH
+    if (
+      locationInput !== "" &&
+      !villaLocation.includes(locationInput)
+    ) {
+      show = false;
+    }
+
+    // GUEST FILTER
+    if (
+      guestInput !== "" &&
+      villaGuests < parseInt(guestInput)
+    ) {
+      show = false;
+    }
+
+    // PRICE FILTER
+    if (
+      priceInput !== "" &&
+      villaPrice < parseInt(priceInput)
+    ) {
+      show = false;
+    }
+
+    villa.style.display = show ? "block" : "none";
+  });
+}
+
   const location = document.getElementById("locationFilter").value.toLowerCase();
 }
