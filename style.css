@@ -26,6 +26,85 @@ body{
   z-index:9999;
 }
 
+/* CHATBOT BUTTON */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* floating button */
+.chat-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #1e90ff;
+  color: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* chat box */
+.chat-box {
+  width: 300px;
+  height: 400px;
+  background: white;
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* header */
+.chat-header {
+  background: #1e90ff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* body */
+.chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.chat-body .bot {
+  background: #f1f1f1;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+/* input */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+.chat-input button {
+  background: #1e90ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
 /* Navbar */
 .navbar{
   position:fixed;
