@@ -65,35 +65,62 @@ function showTestimonials(){
 
 setInterval(showTestimonials, 3000);
 
+function toggleChat(){
+  const box = document.getElementById("chatbotBox");
+  box.style.display = box.style.display === "flex" ? "none" : "flex";
+}
+
+function sendMessage(){
+  const input = document.getElementById("userInput");
+  const chat = document.getElementById("chatBody");
+
+  if(input.value.trim() === "") return;
+
+  // user message
+  const userMsg = document.createElement("p");
+  userMsg.textContent = input.value;
+  userMsg.style.textAlign = "right";
+  userMsg.style.background = "#d1e7ff";
+  userMsg.style.padding = "8px";
+  userMsg.style.borderRadius = "10px";
+  userMsg.style.margin = "5px 0";
+
+  chat.appendChild(userMsg);
+
+  // auto reply (luxury concierge style)
+  setTimeout(() => {
+    const botMsg = document.createElement("p");
+    botMsg.className = "bot";
+
+    botMsg.textContent =
+      "Thank you! Our concierge will assist you shortly. You may also browse villas or book directly.";
+
+    chat.appendChild(botMsg);
+    chat.scrollTop = chat.scrollHeight;
+  }, 800);
+
+  input.value = "";
+}
+
 // Villa Filter
-function filterVillas(){
-
-  const location = document.getElementById("locationFilter").value.toLowerCase();
-  const guests = document.getElementById("guestFilter").value;
-  const price = document.getElementById("priceFilter").value;
-
+function filterVillas() {
+  const input = document.getElementById("locationFilter").value.toLowerCase();
   const villas = document.querySelectorAll(".villa-card");
 
   villas.forEach(villa => {
 
-    const villaLocation = villa.dataset.location.toLowerCase();
-    const villaGuests = villa.dataset.guests;
-    const villaPrice = villa.dataset.price;
+    const location = villa.dataset.location.toLowerCase();
+    const title = villa.querySelector("h3").textContent.toLowerCase();
+    const place = villa.querySelector("p").textContent.toLowerCase();
 
-    let show = true;
-
-    if(location && !villaLocation.includes(location)){
-      show = false;
+    if (
+      location.includes(input) ||
+      title.includes(input) ||
+      place.includes(input)
+    ) {
+      villa.style.display = "block";
+    } else {
+      villa.style.display = "none";
     }
-
-    if(guests && villaGuests !== guests){
-      show = false;
-    }
-
-    if(price && villaPrice < price){
-      show = false;
-    }
-
-    villa.style.display = show ? "block" : "none";
   });
 }
