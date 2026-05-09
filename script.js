@@ -30,30 +30,29 @@ closeBtn.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
 
-// Booking Form Validation
-const bookingForm = document.getElementById("bookingForm");
+document.querySelectorAll(".book-btn").forEach(btn => {
 
-bookingForm.addEventListener("submit", function(e){
-  e.preventDefault();
+  btn.addEventListener("click", (e) => {
 
-  const toast = document.createElement("div");
-  toast.className = "toast-success";
-  toast.textContent = "Booking submitted successfully! Check your email for confirmation.";
+    e.stopPropagation();
 
-  document.body.appendChild(toast);
+    const villaName =
+      btn.parentElement.querySelector("h3").textContent;
 
-  setTimeout(() => {
-    toast.classList.add("show");
-  }, 100);
+    localStorage.setItem("selectedVilla", villaName);
 
-  setTimeout(() => {
-    toast.classList.remove("show");
-    setTimeout(() => toast.remove(), 300);
-  }, 3500);
+    window.location.href = "booking.html";
 
-  bookingForm.reset();
+  });
+
 });
 
+function goBooking(villaName){
+
+  localStorage.setItem("selectedVilla", villaName);
+
+  window.location.href = "booking.html";
+}
 
 // Testimonials Slider
 let testimonials = document.querySelectorAll(".testimonial");
@@ -113,39 +112,103 @@ document.querySelectorAll(".book-btn").forEach(btn => {
   btn.addEventListener("click", () => {
 
     // smooth scroll to booking section
-    document.getElementById("booking").scrollIntoView({
-      behavior: "smooth"
-    });
+    window.location.href = "booking.html";
 
-    // alert message
-    alert("Please complete your booking details below.");
-    
   });
 });
+
 
 function openVilla(location){
 
   const modal = document.createElement("div");
   modal.className = "villa-modal";
 
+  let details = "";
+
+  if(location === "Boracay"){
+    details = `
+      📍 Beachfront, Boracay
+      <br><br>
+      <b>Featured Amenities:</b>
+      <ul>
+        <li>36 m² / 388 ft²</li>
+        <li>2 Single Beds</li>
+        <li>Private Pool</li>
+        <li>WiFi & Flat Screen TV</li>
+        <li>Air Conditioning</li>
+      </ul>
+      <p><b>Policy:</b> Non-refundable booking</p>
+    `;
+  }
+
+  else if(location === "El Nido"){
+    details = `
+      📍 El Nido, Palawan
+      <br><br>
+      <b>Featured Amenities:</b>
+      <ul>
+        <li>Ocean View Villa</li>
+        <li>Private Infinity Pool</li>
+        <li>2–4 Pax</li>
+        <li>Luxury Bathroom</li>
+        <li>WiFi & Kitchen</li>
+      </ul>
+      <p><b>Policy:</b> Book & Pay Now</p>
+    `;
+  }
+
+  else if(location === "Coron"){
+    details = `
+      📍 Coron, Palawan
+      <br><br>
+      <b>Featured Amenities:</b>
+      <ul>
+        <li>Cliffside Villa</li>
+        <li>Sea View Balcony</li>
+        <li>2–4 Pax</li>
+        <li>Hot Shower</li>
+        <li>Air Conditioning</li>
+      </ul>
+      <p><b>Policy:</b> Non-refundable</p>
+    `;
+  }
+
+  else if(location === "Cebu"){
+    details = `
+      📍 Cebu City
+      <br><br>
+      <b>Featured Amenities:</b>
+      <ul>
+        <li>Infinity Pool</li>
+        <li>Family Villa (4–8 Pax)</li>
+        <li>Kitchen & Dining Area</li>
+        <li>WiFi & TV</li>
+      </ul>
+      <p><b>Policy:</b> Free cancellation 24h</p>
+    `;
+  }
+
+  else if(location === "Siargao"){
+    details = `
+      📍 Siargao Island
+      <br><br>
+      <b>Featured Amenities:</b>
+      <ul>
+        <li>Surf View Villa</li>
+        <li>2–4 Pax</li>
+        <li>Outdoor Lounge</li>
+        <li>WiFi & AC</li>
+      </ul>
+      <p><b>Policy:</b> Book & Pay Now</p>
+    `;
+  }
+
   modal.innerHTML = `
     <div class="villa-box">
       <h2>${location} Villa Details</h2>
+      <div>${details}</div>
 
-      <p><b>📍 Location:</b> ${location}, Philippines</p>
-
-      <h3>✨ Amenities</h3>
-      <ul>
-        <li>2–4 Pax Capacity</li>
-        <li>Private Pool / Beach Access</li>
-        <li>WiFi & TV</li>
-        <li>Air Conditioning</li>
-        <li>Bathroom & Kitchen</li>
-      </ul>
-
-      <h3>📜 Policy</h3>
-      <p>Non-refundable booking. Payment required upon reservation.</p>
-
+      <br>
       <button onclick="closeVilla()">Close</button>
     </div>
   `;
