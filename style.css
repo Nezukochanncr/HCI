@@ -57,6 +57,29 @@ body{
   margin:5px 0;
 }
 
+.top-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0 12px;
+}
+
+.stars{
+  font-size:14px;
+  color:gold;
+}
+
+.heart{
+  font-size:20px;
+  cursor:pointer;
+  color:white;
+  transition:0.3s;
+}
+
+.heart.active{
+  color:red;
+}
+
 /* chat box */
 .chat-box {
   width: 300px;
