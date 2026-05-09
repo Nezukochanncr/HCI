@@ -1,11 +1,14 @@
-// script.js
-
-// Loader
+// =====================
+// LOADER
+// =====================
 window.addEventListener("load", () => {
   document.querySelector(".loader").style.display = "none";
 });
 
-// Mobile Navbar
+
+// =====================
+// MOBILE NAV
+// =====================
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 
@@ -13,54 +16,43 @@ hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
-document.addEventListener("click", function(e){
-  if(e.target.closest(".heart")){
-    const heart = e.target.closest(".heart");
-    heart.classList.toggle("active");
 
-    const icon = heart.querySelector("i");
-    icon.classList.toggle("fa-regular");
-    icon.classList.toggle("fa-solid");
-  }
+// =====================
+// HEART FAVORITE (fixed duplicate issue)
+// =====================
+document.addEventListener("click", function (e) {
+  const heart = e.target.closest(".heart");
+
+  if (!heart) return;
+
+  heart.classList.toggle("active");
+
+  const icon = heart.querySelector("i");
+  icon.classList.toggle("fa-regular");
+  icon.classList.toggle("fa-solid");
 });
 
+
+// =====================
+// SEARCH + SUGGESTIONS
+// =====================
 const input = document.getElementById("searchInput");
 const suggestionsBox = document.getElementById("suggestions");
 
-// all villa locations
 const locations = [
-  "Tagaytay",
-  "Batangas",
-  "Laguna",
-  "Baguio",
-  "Rizal",
-  "Cavite",
-  "Palawan",
-  "Cebu",
-  "Siargao",
-  "Zambales",
-  "Antipolo",
-  "Quezon",
-  "Davao",
-  "Iloilo",
-  "Bacolod",
-  "La Union",
-  "Boracay",
-  "Pampanga",
-  "Subic",
-  "Albay",
-  "Mindoro",
-  "Siquijor",
-  "Dumaguete",
-  "Bohol"
+  "Tagaytay","Batangas","Laguna","Baguio","Rizal","Cavite",
+  "Palawan","Cebu","Siargao","Zambales","Antipolo","Quezon",
+  "Davao","Iloilo","Bacolod","La Union","Boracay","Pampanga",
+  "Subic","Albay","Mindoro","Siquijor","Dumaguete","Bohol"
 ];
 
-input.addEventListener("input", function () {
-  const value = this.value.toLowerCase();
+input.addEventListener("input", () => {
+  const value = input.value.toLowerCase();
   suggestionsBox.innerHTML = "";
 
-  if (value === "") {
+  if (!value) {
     suggestionsBox.style.display = "none";
+    filterVillas(""); // reset
     return;
   }
 
@@ -77,11 +69,11 @@ input.addEventListener("input", function () {
     const div = document.createElement("div");
     div.textContent = loc;
 
-    div.addEventListener("click", () => {
+    div.onclick = () => {
       input.value = loc;
       suggestionsBox.style.display = "none";
       filterVillas(loc);
-    });
+    };
 
     suggestionsBox.appendChild(div);
   });
@@ -89,14 +81,24 @@ input.addEventListener("input", function () {
   suggestionsBox.style.display = "block";
 });
 
-// filter villas function
-function filterVillas(location){
+// hide dropdown
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".search-box")) {
+    suggestionsBox.style.display = "none";
+  }
+});
+
+
+// =====================
+// FILTER VILLAS (FIXED — removed duplicate function)
+// =====================
+function filterVillas(location = "") {
   const villas = document.querySelectorAll(".villa-card");
 
   villas.forEach(villa => {
     const loc = villa.getAttribute("data-location").toLowerCase();
 
-    if(loc.includes(location.toLowerCase())){
+    if (!location || loc.includes(location.toLowerCase())) {
       villa.style.display = "block";
     } else {
       villa.style.display = "none";
@@ -104,18 +106,14 @@ function filterVillas(location){
   });
 }
 
-// hide dropdown when clicking outside
-document.addEventListener("click", function(e){
-  if(!e.target.closest(".search-box")){
-    suggestionsBox.style.display = "none";
-  }
-});
 
-// Gallery Lightbox
-const galleryImages = document.querySelectorAll(".gallery-img");
+// =====================
+// LIGHTBOX (FIXED selector)
+// =====================
+const galleryImages = document.querySelectorAll(".gallery-container img");
 const lightbox = document.querySelector(".lightbox");
 const lightboxImg = document.querySelector(".lightbox-img");
-const closeBtn = document.querySelector(".close");
+const closeLightbox = document.querySelector(".lightbox .close");
 
 galleryImages.forEach(img => {
   img.addEventListener("click", () => {
@@ -124,88 +122,90 @@ galleryImages.forEach(img => {
   });
 });
 
-closeBtn.addEventListener("click", () => {
+closeLightbox.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
 
-function toggleChat(){
+
+// =====================
+// CHAT TOGGLE
+// =====================
+function toggleChat() {
   const chatBox = document.getElementById("chatBox");
-  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+  chatBox.style.display =
+    chatBox.style.display === "flex" ? "none" : "flex";
 }
 
-document.querySelectorAll(".heart").forEach(heart => {
-  heart.addEventListener("click", () => {
-    heart.classList.toggle("active");
 
-    const icon = heart.querySelector("i");
-    icon.classList.toggle("fa-regular");
-    icon.classList.toggle("fa-solid");
-  });
-});
-
-// simple chat reply (demo lang)
-function sendMessage(){
+// =====================
+// CHAT MESSAGE
+// =====================
+function sendMessage() {
   const input = document.getElementById("userInput");
   const chatBody = document.getElementById("chatBody");
 
-  if(input.value.trim() === "") return;
+  if (!input.value.trim()) return;
 
-  // user message
-  let userMsg = document.createElement("p");
+  const userMsg = document.createElement("p");
   userMsg.textContent = input.value;
   userMsg.style.textAlign = "right";
   userMsg.style.background = "#d1f0ff";
   userMsg.style.padding = "8px";
   userMsg.style.borderRadius = "8px";
+
   chatBody.appendChild(userMsg);
 
-  // bot reply
-  let botMsg = document.createElement("p");
+  const botMsg = document.createElement("p");
   botMsg.textContent = "Thank you! Our team will assist you shortly.";
   botMsg.classList.add("bot");
+
   chatBody.appendChild(botMsg);
 
   input.value = "";
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-// Booking Form Validation
+
+// =====================
+// BOOKING FORM
+// =====================
 const bookingForm = document.getElementById("bookingForm");
 
 bookingForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
+  const name = bookingForm.querySelector('input[placeholder="Full Name"]').value;
+  const email = bookingForm.querySelector('input[type="email"]').value;
 
-  if(name === "" || email === ""){
+  if (!name || !email) {
     alert("Please fill in all required fields.");
-  } else {
-    alert("Booking submitted successfully!");
-    bookingForm.reset();
+    return;
   }
+
+  alert("Booking submitted successfully!");
+  bookingForm.reset();
 });
 
-// Testimonials Slider
+
+// =====================
+// TESTIMONIAL SLIDER
+// =====================
 let testimonials = document.querySelectorAll(".testimonial");
 let index = 0;
 
-function showTestimonials(){
+setInterval(() => {
   testimonials.forEach(t => t.classList.remove("active"));
-
   testimonials[index].classList.add("active");
 
-  index++;
+  index = (index + 1) % testimonials.length;
+}, 3000);
 
-  if(index >= testimonials.length){
-    index = 0;
-  }
-}
 
-setInterval(showTestimonials, 3000);
-
+// =====================
+// BOOKING MODAL
+// =====================
 const modal = document.getElementById("bookingModal");
-const closeBtn = document.querySelector(".close");
+const modalClose = document.querySelector("#bookingModal .close");
 
 document.querySelectorAll(".villa-info button").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -213,26 +213,6 @@ document.querySelectorAll(".villa-info button").forEach(btn => {
   });
 });
 
-closeBtn.addEventListener("click", () => {
+modalClose.addEventListener("click", () => {
   modal.style.display = "none";
-});
-
-// Villa Filter
-function filterVillas(){
-
-  const searchInput = document.getElementById("searchInput");
-const villas = document.querySelectorAll(".villa-card");
-
-searchInput.addEventListener("input", function () {
-  const value = this.value.toLowerCase();
-
-  villas.forEach(villa => {
-    const location = villa.getAttribute("data-location").toLowerCase();
-
-    if (location.includes(value)) {
-      villa.style.display = "block";
-    } else {
-      villa.style.display = "none";
-    }
-  });
 });
