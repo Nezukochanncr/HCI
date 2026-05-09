@@ -1,215 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Azure Cove Villas</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css"/>
-
-  <!-- Icons -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Azure Cove Villas</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
-  <!-- LOADER -->
-  <div class="loader">
-    <h1>Azure Cove</h1>
-  </div>
+<!-- NAVBAR -->
+<header>
+  <div class="logo">Azure Cove Villas</div>
 
-  <!-- HEADER -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Azure Cove</div>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#villas">Villas</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Booking</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#villas">Villas</a></li>
-        <li><a href="#amenities">Amenities</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#booking">Booking</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
 
-      <div class="hamburger">
-        <i class="fa-solid fa-bars"></i>
-      </div>
-    </nav>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Find Your Perfect Luxury Villa</h1>
+    <p>Private pools. Tropical escapes. Premium stays.</p>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1>Luxury Villas & Private Pools</h1>
-        <p>Experience paradise with premium tropical escapes.</p>
-        <a href="#booking" class="btn">Reserve Now</a>
-      </div>
-    </section>
-  </header>
-
-  <!-- SEARCH -->
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search location...">
-    <button>Book</button>
-    <div id="suggestions" class="suggestions"></div>
-  </div>
-
-  <!-- VILLAS -->
-  <section class="villas" id="villas">
-    <h2>FEATURED VILLAS</h2>
-
-    <div class="villa-container">
-      <!-- villa cards unchanged (1–30) -->
-      <!-- keep your existing villa cards here -->
-    </div>
-  </section>
-
-  <!-- AMENITIES -->
-  <section class="amenities section" id="amenities">
-    <h2 class="section-title">Amenities</h2>
-
-    <div class="amenities-container">
-      <div class="amenity"><i class="fa-solid fa-water-ladder"></i><h3>Swimming Pool</h3></div>
-      <div class="amenity"><i class="fa-solid fa-wifi"></i><h3>WiFi</h3></div>
-      <div class="amenity"><i class="fa-solid fa-microphone"></i><h3>Karaoke</h3></div>
-      <div class="amenity"><i class="fa-solid fa-snowflake"></i><h3>Air-conditioned</h3></div>
-      <div class="amenity"><i class="fa-solid fa-kitchen-set"></i><h3>Kitchen</h3></div>
-      <div class="amenity"><i class="fa-solid fa-square-parking"></i><h3>Parking</h3></div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="gallery" id="gallery">
-    <h2>Gallery</h2>
-
-    <div class="gallery-container">
-      <!-- images unchanged -->
-    </div>
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox">
-    <span class="close">&times;</span>
-    <img class="lightbox-img">
-  </div>
-
-  <!-- BOOKING -->
-  <section class="booking section" id="booking">
-    <h2 class="section-title">Book Your Stay</h2>
-
-    <form id="bookingForm">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="date" required>
-      <input type="date" required>
-      <input type="number" placeholder="Number of Guests" required>
-      <button type="submit">Submit Booking</button>
-    </form>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials section">
-    <h2 class="section-title">Guest Reviews</h2>
-
-    <div class="testimonial-slider">
-      <div class="testimonial active">
-        <p>"Amazing villa and relaxing atmosphere!"</p>
-        <h4>- Sophia</h4>
-      </div>
-
-      <div class="testimonial">
-        <p>"The private pool was beautiful and clean."</p>
-        <h4>- Daniel</h4>
-      </div>
-
-      <div class="testimonial">
-        <p>"Perfect vacation spot for families."</p>
-        <h4>- Angela</h4>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact section" id="contact">
-    <h2 class="section-title">Contact Us</h2>
-
-    <div class="contact-container">
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Your Email">
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-
-      <div class="map">
-        <iframe src="https://maps.google.com/maps?q=boracay&t=&z=13&output=embed"></iframe>
-      </div>
-    </div>
-
-    <div class="socials">
-      <i class="fab fa-facebook"></i>
-      <i class="fab fa-instagram"></i>
-      <i class="fab fa-twitter"></i>
-    </div>
-  </section>
-
-  <!-- CHATBOT -->
-  <div class="chatbot">
-    <button class="chat-btn" onclick="toggleChat()">
-      <i class="fa-solid fa-headset"></i>
-    </button>
-
-    <div class="chat-box" id="chatBox">
-      <div class="chat-header">
-        <h4>Customer Service</h4>
-        <span onclick="toggleChat()">✖</span>
-      </div>
-
-      <div class="chat-body" id="chatBody">
-        <p class="bot">Hi! 👋 How can we help you?</p>
-      </div>
-
-      <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Type a message...">
-        <button onclick="sendMessage()">Send</button>
-      </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search location..." onkeyup="filterVillas()">
     </div>
   </div>
+</section>
 
-  <!-- BOOKING MODAL -->
-  <div id="bookingModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Book Villa</h2>
+<!-- VILLAS -->
+<section id="villas">
+  <h2>Featured Villas</h2>
+  <div id="villaContainer" class="villa-grid"></div>
+</section>
 
-      <input type="date">
-      <input type="date">
-      <input type="number" placeholder="Guests">
-
-      <button>Confirm Booking</button>
-    </div>
+<!-- AMENITIES -->
+<section id="amenities">
+  <h2>Amenities</h2>
+  <div class="amenities">
+    <div>🏊 Swimming Pool</div>
+    <div>📶 WiFi</div>
+    <div>🎤 Karaoke</div>
+    <div>❄ Air-conditioned</div>
+    <div>🍳 Kitchen</div>
+    <div>🚗 Parking</div>
   </div>
+</section>
 
-  <!-- PAYMENT -->
-  <div class="payment">
-    <h3>Payment Checkout</h3>
-
-    <input type="text" placeholder="Card Number">
-    <input type="text" placeholder="Name on Card">
-    <input type="text" placeholder="MM/YY">
-    <input type="text" placeholder="CVV">
-
-    <button>Pay Now</button>
+<!-- GALLERY -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="https://picsum.photos/300/200?1" onclick="openLightbox(this)">
+    <img src="https://picsum.photos/300/200?2" onclick="openLightbox(this)">
+    <img src="https://picsum.photos/300/200?3" onclick="openLightbox(this)">
+    <img src="https://picsum.photos/300/200?4" onclick="openLightbox(this)">
+    <img src="https://picsum.photos/300/200?5" onclick="openLightbox(this)">
+    <img src="https://picsum.photos/300/200?6" onclick="openLightbox(this)">
   </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Azure Cove Villas. All Rights Reserved.</p>
-  </footer>
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+</div>
 
-  <script src="script.js"></script>
+<!-- BOOKING -->
+<section id="booking">
+  <h2>Book Your Stay</h2>
+
+  <form onsubmit="submitBooking(event)">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="date" required>
+    <input type="date" required>
+    <input type="number" placeholder="Guests" required>
+
+    <button type="submit">Submit Booking</button>
+  </form>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <h2>Reviews</h2>
+  <div class="testimonial" id="testimonialBox">
+    "Best villa experience ever!" - Ana
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+
+  <form>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Send</button>
+  </form>
+
+  <div class="map">Google Maps Placeholder</div>
+</section>
+
+<!-- CHATBOT -->
+<div class="chatbot">💬</div>
+
+<script src="script.js"></script>
 </body>
 </html>
