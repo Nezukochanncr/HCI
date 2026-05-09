@@ -55,32 +55,6 @@ bookingForm.addEventListener("submit", function(e){
 });
 
 
-const contactForm = document.querySelector(".contact-form");
-
-contactForm.addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const msg = document.createElement("div");
-  msg.textContent = "📩 Message submitted successfully!";
-
-  msg.style.position = "fixed";
-  msg.style.bottom = "20px";
-  msg.style.right = "20px";
-  msg.style.background = "#012b45";
-  msg.style.color = "white";
-  msg.style.padding = "15px";
-  msg.style.borderRadius = "10px";
-  msg.style.zIndex = "9999";
-
-  document.body.appendChild(msg);
-
-  setTimeout(() => {
-    msg.remove();
-  }, 3000);
-
-  contactForm.reset();
-});
-
 // Testimonials Slider
 let testimonials = document.querySelectorAll(".testimonial");
 let index = 0;
