@@ -13,6 +13,17 @@ hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
 });
 
+document.addEventListener("click", function(e){
+  if(e.target.closest(".heart")){
+    const heart = e.target.closest(".heart");
+    heart.classList.toggle("active");
+
+    const icon = heart.querySelector("i");
+    icon.classList.toggle("fa-regular");
+    icon.classList.toggle("fa-solid");
+  }
+});
+
 // Gallery Lightbox
 const galleryImages = document.querySelectorAll(".gallery-img");
 const lightbox = document.querySelector(".lightbox");
