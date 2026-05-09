@@ -106,6 +106,19 @@ function showTestimonials(){
 
 setInterval(showTestimonials, 3000);
 
+const modal = document.getElementById("bookingModal");
+const closeBtn = document.querySelector(".close");
+
+document.querySelectorAll(".villa-info button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
 // Villa Filter
 function filterVillas(){
 
