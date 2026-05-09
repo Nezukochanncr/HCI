@@ -24,6 +24,93 @@ document.addEventListener("click", function(e){
   }
 });
 
+const input = document.getElementById("searchInput");
+const suggestionsBox = document.getElementById("suggestions");
+
+// all villa locations
+const locations = [
+  "Tagaytay",
+  "Batangas",
+  "Laguna",
+  "Baguio",
+  "Rizal",
+  "Cavite",
+  "Palawan",
+  "Cebu",
+  "Siargao",
+  "Zambales",
+  "Antipolo",
+  "Quezon",
+  "Davao",
+  "Iloilo",
+  "Bacolod",
+  "La Union",
+  "Boracay",
+  "Pampanga",
+  "Subic",
+  "Albay",
+  "Mindoro",
+  "Siquijor",
+  "Dumaguete",
+  "Bohol"
+];
+
+input.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
+  suggestionsBox.innerHTML = "";
+
+  if (value === "") {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+
+  const filtered = locations.filter(loc =>
+    loc.toLowerCase().includes(value)
+  );
+
+  if (filtered.length === 0) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+
+  filtered.forEach(loc => {
+    const div = document.createElement("div");
+    div.textContent = loc;
+
+    div.addEventListener("click", () => {
+      input.value = loc;
+      suggestionsBox.style.display = "none";
+      filterVillas(loc);
+    });
+
+    suggestionsBox.appendChild(div);
+  });
+
+  suggestionsBox.style.display = "block";
+});
+
+// filter villas function
+function filterVillas(location){
+  const villas = document.querySelectorAll(".villa-card");
+
+  villas.forEach(villa => {
+    const loc = villa.getAttribute("data-location").toLowerCase();
+
+    if(loc.includes(location.toLowerCase())){
+      villa.style.display = "block";
+    } else {
+      villa.style.display = "none";
+    }
+  });
+}
+
+// hide dropdown when clicking outside
+document.addEventListener("click", function(e){
+  if(!e.target.closest(".search-box")){
+    suggestionsBox.style.display = "none";
+  }
+});
+
 // Gallery Lightbox
 const galleryImages = document.querySelectorAll(".gallery-img");
 const lightbox = document.querySelector(".lightbox");
