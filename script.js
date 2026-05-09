@@ -99,33 +99,19 @@ setInterval(showTestimonials, 3000);
 // Villa Filter
 function filterVillas(){
 
-  const input = document
-    .getElementById("locationFilter")
-    .value
-    .toLowerCase();
+  const searchInput = document.getElementById("searchInput");
+const villas = document.querySelectorAll(".villa-card");
 
-  const villas = document.querySelectorAll(".villa-card");
+searchInput.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
 
   villas.forEach(villa => {
+    const location = villa.getAttribute("data-location").toLowerCase();
 
-    const location = villa.dataset.location.toLowerCase();
-
-    const name = villa.querySelector("h3")
-      .textContent
-      .toLowerCase();
-
-    let show = true;
-
-    if (
-      input !== "" &&
-      !location.includes(input) &&
-      !name.includes(input)
-    ){
-      show = false;
+    if (location.includes(value)) {
+      villa.style.display = "block";
+    } else {
+      villa.style.display = "none";
     }
-
-    villa.style.display = show ? "block" : "none";
-
   });
-
-}
+});
