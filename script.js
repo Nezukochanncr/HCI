@@ -1,5 +1,3 @@
-// script.js
-
 // Loader
 window.addEventListener("load", () => {
   document.querySelector(".loader").style.display = "none";
@@ -47,62 +45,12 @@ bookingForm.addEventListener("submit", (e) => {
   }
 });
 
-function filterVillas() {
-
-  const locationInput = document
-    .getElementById("locationFilter")
-    .value
-    .trim()
-    .toLowerCase();
-
-  const guestInput = document.getElementById("guestFilter").value;
-
-  const priceInput = document.getElementById("priceFilter").value;
-
-  const villas = document.querySelectorAll(".villa-card");
-
-  villas.forEach(villa => {
-
-    const villaLocation = villa.dataset.location.toLowerCase();
-
-    const villaGuests = parseInt(villa.dataset.guests);
-
-    const villaPrice = parseInt(villa.dataset.price);
-
-    let show = true;
-
-    // LOCATION SEARCH
-    if (
-      locationInput !== "" &&
-      !villaLocation.includes(locationInput)
-    ) {
-      show = false;
-    }
-
-    // GUEST FILTER
-    if (
-      guestInput !== "" &&
-      villaGuests < parseInt(guestInput)
-    ) {
-      show = false;
-    }
-
-    // PRICE FILTER
-    if (
-      priceInput !== "" &&
-      villaPrice < parseInt(priceInput)
-    ) {
-      show = false;
-    }
-
-    villa.style.display = show ? "block" : "none";
-  });
-}
 // Testimonials Slider
 let testimonials = document.querySelectorAll(".testimonial");
 let index = 0;
 
 function showTestimonials(){
+
   testimonials.forEach(t => t.classList.remove("active"));
 
   testimonials[index].classList.add("active");
@@ -120,31 +68,4 @@ setInterval(showTestimonials, 3000);
 function filterVillas(){
 
   const location = document.getElementById("locationFilter").value.toLowerCase();
-  const guests = document.getElementById("guestFilter").value;
-  const price = document.getElementById("priceFilter").value;
-
-  const villas = document.querySelectorAll(".villa-card");
-
-  villas.forEach(villa => {
-
-    const villaLocation = villa.dataset.location.toLowerCase();
-    const villaGuests = villa.dataset.guests;
-    const villaPrice = villa.dataset.price;
-
-    let show = true;
-
-    if(location && !villaLocation.includes(location)){
-      show = false;
-    }
-
-    if(guests && villaGuests !== guests){
-      show = false;
-    }
-
-    if(price && villaPrice < price){
-      show = false;
-    }
-
-    villa.style.display = show ? "block" : "none";
-  });
 }
