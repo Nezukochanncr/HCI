@@ -433,7 +433,31 @@ footer{
   padding:10px;
   cursor:pointer;
 }
+.contact-details{
+  margin-top:25px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
 
+.contact-item{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  background:#f5f5f5;
+  padding:15px;
+  border-radius:12px;
+}
+
+.contact-item i{
+  font-size:20px;
+  color:#012b45;
+}
+
+.contact-item p{
+  margin:0;
+  color:#333;
+}
 /* Responsive */
 @media(max-width:768px){
 
