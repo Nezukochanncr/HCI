@@ -33,18 +33,52 @@ closeBtn.addEventListener("click", () => {
 // Booking Form Validation
 const bookingForm = document.getElementById("bookingForm");
 
-bookingForm.addEventListener("submit", (e) => {
+bookingForm.addEventListener("submit", function(e){
   e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
+  const toast = document.createElement("div");
+  toast.className = "toast-success";
+  toast.textContent = "Booking submitted successfully! Check your email for confirmation.";
 
-  if(name === "" || email === ""){
-    alert("Please fill in all required fields.");
-  } else {
-    alert("Booking submitted successfully!");
-    bookingForm.reset();
-  }
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 100);
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+
+  bookingForm.reset();
+});
+
+
+const contactForm = document.querySelector(".contact-form");
+
+contactForm.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const msg = document.createElement("div");
+  msg.textContent = "📩 Message submitted successfully!";
+
+  msg.style.position = "fixed";
+  msg.style.bottom = "20px";
+  msg.style.right = "20px";
+  msg.style.background = "#012b45";
+  msg.style.color = "white";
+  msg.style.padding = "15px";
+  msg.style.borderRadius = "10px";
+  msg.style.zIndex = "9999";
+
+  document.body.appendChild(msg);
+
+  setTimeout(() => {
+    msg.remove();
+  }, 3000);
+
+  contactForm.reset();
 });
 
 // Testimonials Slider
@@ -101,6 +135,19 @@ function sendMessage(){
 
   input.value = "";
 }
+document.querySelectorAll(".book-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    // smooth scroll to booking section
+    document.getElementById("booking").scrollIntoView({
+      behavior: "smooth"
+    });
+
+    // alert message
+    alert("Please complete your booking details below.");
+    
+  });
+});
 
 // Villa Filter
 function filterVillas() {
