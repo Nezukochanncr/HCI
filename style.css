@@ -443,6 +443,47 @@ footer{
   margin:5px 0;
 }
 
+.villa-modal{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+}
+
+.villa-box{
+  background:white;
+  padding:25px;
+  width:90%;
+  max-width:500px;
+  border-radius:15px;
+}
+
+.villa-box h2{
+  color:#012b45;
+}
+
+.villa-box ul{
+  padding-left:20px;
+}
+
+.villa-box button{
+  margin-top:15px;
+  padding:10px 15px;
+  background:#012b45;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
 /* INPUT */
 .chat-input{
   display:flex;
