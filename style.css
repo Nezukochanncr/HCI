@@ -240,12 +240,11 @@ body{
 }
 
 .villa-card{
-  text-align:center;
-  font-size:55px;
-  font-family:Optima, sans-serif;
-  color:#111;
-  margin-bottom:40px;
-  font-weight:bold;
+  background:#111c2e;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.4s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.5);
 }
 
 .villa-card:hover{
