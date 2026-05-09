@@ -148,6 +148,17 @@ body{
   cursor:pointer;
 }
 
+.heart{
+  float:right;
+  font-size:22px;
+  cursor:pointer;
+  color:white;
+  transition:0.3s;
+}
+
+.heart.active{
+  color:red;
+}
 /* Hero */
 .hero{
   height:100vh;
