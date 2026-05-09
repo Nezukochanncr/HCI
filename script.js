@@ -1,129 +1,42 @@
 // MOBILE MENU
-const hamburger =
-document.querySelector(".hamburger");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-const navLinks =
-document.querySelector(".nav-links");
-
-hamburger.addEventListener("click", () => {
-
-  if(navLinks.style.display === "flex"){
-
-    navLinks.style.display = "none";
-
-  } else {
-
-    navLinks.style.display = "flex";
-    navLinks.style.flexDirection = "column";
-
-  }
-
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
 
-// LIGHTBOX
-const galleryImages =
-document.querySelectorAll(".gallery-img");
-
-const lightbox =
-document.querySelector(".lightbox");
-
-const lightboxImg =
-document.querySelector(".lightbox-img");
-
-const closeBtn =
-document.querySelector(".close");
-
-galleryImages.forEach(img => {
-
-  img.addEventListener("click", () => {
-
-    lightbox.style.display = "flex";
-
-    lightboxImg.src = img.src;
-
-  });
-
-});
-
-closeBtn.addEventListener("click", () => {
-
-  lightbox.style.display = "none";
-
-});
-
-// BOOKING FORM
-const bookingForm =
-document.getElementById("bookingForm");
-
-bookingForm.addEventListener("submit", (e) => {
-
-  e.preventDefault();
-
-  alert("Booking Submitted!");
-
-  bookingForm.reset();
-
-});
-
-// SEARCH FILTER
-function filterVillas(){
-
-  const locationInput =
-  document.getElementById("locationFilter")
-  .value
-  .toLowerCase();
-
-  const guestInput =
-  document.getElementById("guestFilter")
-  .value;
-
-  const priceInput =
-  document.getElementById("priceFilter")
-  .value;
-
-  const villas =
-  document.querySelectorAll(".villa-card");
+// SEARCH FUNCTION
+function searchVilla() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const villas = document.querySelectorAll(".villa-card");
 
   villas.forEach(villa => {
+    const location = villa.dataset.location;
 
-    const villaLocation =
-    villa.dataset.location.toLowerCase();
-
-    const villaGuests =
-    parseInt(villa.dataset.guests);
-
-    const villaPrice =
-    parseInt(villa.dataset.price);
-
-    let show = true;
-
-    // LOCATION
-    if(
-      locationInput !== "" &&
-      !villaLocation.includes(locationInput)
-    ){
-      show = false;
+    if(location.includes(input)){
+      villa.style.display = "block";
+    } else {
+      villa.style.display = "none";
     }
-
-    // GUESTS
-    if(
-      guestInput !== "" &&
-      villaGuests < parseInt(guestInput)
-    ){
-      show = false;
-    }
-
-    // PRICE
-    if(
-      priceInput !== "" &&
-      villaPrice < parseInt(priceInput)
-    ){
-      show = false;
-    }
-
-    villa.style.display =
-    show ? "block" : "none";
-
   });
-
 }
+
+// SCROLL REVEAL
+window.addEventListener("scroll", reveal);
+
+function reveal(){
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach(item => {
+    const windowHeight = window.innerHeight;
+    const elementTop = item.getBoundingClientRect().top;
+    const elementVisible = 100;
+
+    if(elementTop < windowHeight - elementVisible){
+      item.classList.add("active");
+    }
+  });
+}
+
+reveal();
