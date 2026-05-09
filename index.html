@@ -20,8 +20,34 @@
     <h1>Azure Cove</h1>
   </div>
 
-  <!-- Floating Button -->
-  <a href="#booking" class="floating-btn">Book Now</a>
+<!-- CHATBOT FLOATING BUTTON -->
+<div class="chatbot">
+
+  <!-- Button -->
+  <button class="chat-btn" onclick="toggleChat()">
+    <i class="fa-solid fa-headset"></i>
+  </button>
+
+  <!-- Chat Window -->
+  <div class="chat-box" id="chatBox">
+
+    <div class="chat-header">
+      <h4>Customer Service</h4>
+      <span onclick="toggleChat()">✖</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+      <p class="bot">Hi! 👋 How can we help you?</p>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+  </div>
+
+</div>
 
   <!-- HEADER -->
   <header>
