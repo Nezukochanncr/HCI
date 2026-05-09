@@ -240,15 +240,17 @@ body{
 }
 
 .villa-card{
-  background:#111c2e;
+  background: rgba(17, 28, 46, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius:20px;
   overflow:hidden;
   transition:0.4s;
-  box-shadow:0 5px 15px rgba(0,0,0,0.5);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 .villa-card:hover{
-  transform:translateY(-10px);
+  transform:translateY(-12px) scale(1.02);
 }
 
 .villa-card img{
