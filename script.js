@@ -30,6 +30,37 @@ closeBtn.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
 
+function toggleChat(){
+  const chatBox = document.getElementById("chatBox");
+  chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+}
+
+// simple chat reply (demo lang)
+function sendMessage(){
+  const input = document.getElementById("userInput");
+  const chatBody = document.getElementById("chatBody");
+
+  if(input.value.trim() === "") return;
+
+  // user message
+  let userMsg = document.createElement("p");
+  userMsg.textContent = input.value;
+  userMsg.style.textAlign = "right";
+  userMsg.style.background = "#d1f0ff";
+  userMsg.style.padding = "8px";
+  userMsg.style.borderRadius = "8px";
+  chatBody.appendChild(userMsg);
+
+  // bot reply
+  let botMsg = document.createElement("p");
+  botMsg.textContent = "Thank you! Our team will assist you shortly.";
+  botMsg.classList.add("bot");
+  chatBody.appendChild(botMsg);
+
+  input.value = "";
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
 // Booking Form Validation
 const bookingForm = document.getElementById("bookingForm");
 
