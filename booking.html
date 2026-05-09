@@ -2,33 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Booking Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Stay - Azure Cove Villas</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header>
-    <h1>Complete Your Booking</h1>
-  </header>
+<!-- LOADER -->
+<div class="loader">Processing Booking...</div>
+
+<!-- HEADER -->
+<header>
+  <h1 class="section-title">Book Your Stay</h1>
+</header>
+
+<!-- VILLA NAME DISPLAY -->
+<div class="villa-display">
+  <h3 id="villaName"></h3>
+</div>
+
+<!-- BOOKING FORM -->
+<section class="booking section">
 
   <form id="bookingForm">
 
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="date" required>
-    <input type="number" placeholder="Number of Guests" required>
+  <input type="text" placeholder="Full Name" required>
+  <input type="email" placeholder="Email Address" required>
+  <input type="date" required>
+  <input type="date" required>
 
-    <button type="submit">SUBMIT BOOKING</button>
+  <input type="number" placeholder="Guests" required>
 
-  </form>
+  <!-- PAYMENT -->
+  <select id="paymentMethod" required>
+    <option value="">Select Payment Method</option>
+    <option value="paypal">PayPal</option>
+    <option value="gcash">GCash</option>
+    <option value="maya">Maya</option>
+    <option value="cash">Cash Deposit</option>
+  </select>
 
-  <script>
-    document.getElementById("bookingForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      alert("Booking submitted successfully! Check your email for confirmation.");
-      this.reset();
-    });
-  </script>
+  <button type="submit">SUBMIT BOOKING</button>
+
+</form>
+</section>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="home-btn back-btn">← Back</a>
+
+<!-- SCRIPT -->
+<script>
+/* SHOW SELECTED VILLA */
+document.addEventListener("DOMContentLoaded", function(){
+
+  const villa = localStorage.getItem("selectedVilla");
+
+  if(villa){
+    document.getElementById("villaName").textContent =
+      "🏝️ You are booking: " + villa;
+  }
+
+});
+
+/* FORM SUBMIT WITH LOADER */
+const form = document.getElementById("bookingForm");
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  document.querySelector(".loader").style.display = "flex";
+
+  setTimeout(() => {
+    window.location.href = "success.html";
+  }, 2000);
+
+});
+</script>
 
 </body>
 </html>
