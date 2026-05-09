@@ -158,6 +158,29 @@ body{
   font-weight:bold;
 }
 
+.suggestions{
+  position:absolute;
+  background:white;
+  width:300px;
+  max-height:200px;
+  overflow-y:auto;
+  border-radius:10px;
+  margin-top:5px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  display:none;
+  z-index:1000;
+}
+
+.suggestions div{
+  padding:10px;
+  cursor:pointer;
+  color:black;
+}
+
+.suggestions div:hover{
+  background:#f1f1f1;
+}
+
 .nav-links{
   display:flex;
   gap:30px;
