@@ -81,9 +81,8 @@
   <h2>Find Your Perfect Villa</h2>
 
   <div class="filters">
-    <input type="text" id="locationFilter" placeholder="Search location (e.g. Bali, Palawan)">
-
-    <button onclick="filterVillas()">Search</button>
+    <input type="text" id="locationFilter" placeholder="Search villa (e.g. Cebu, El Nido)">
+<button onclick="filterVillas()">Search</button>
   </div>
 </section>
 
@@ -96,96 +95,90 @@
   <div class="villa-container">
 
     <!-- VILLA 1 -->
-   <div class="villa-card" onclick="openVilla('Boracay')">
-      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80">
+   
+<!-- VILLA 1 -->
+<div class="villa-card" data-location="boracay" onclick="openVilla('Boracay')">
+  <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80">
+  <div class="villa-info">
+    <h3>Boracay Luxury Villa</h3>
+    <p class="villa-location">Boracay, Aklan</p>
+    <p class="villa-pax">👥 Good for 2–4 guests</p>
+    <h4 class="villa-price">₱12,500 <span>/ night</span></h4>
+    <span class="villa-rating">⭐⭐⭐⭐⭐</span>
 
-      <div class="villa-info">
-        <h3>Boracay Luxury Villa</h3>
-        <p class="villa-location">Boracay, Aklan</p>
-        <p class="villa-pax">👥 Good for 2–4 guests</p>
-        <h4 class="villa-price">₱12,500 <span>/ night</span></h4>
-        <span class="villa-rating">⭐⭐⭐⭐⭐</span>
-
-        <button class="book-btn"
-        onclick="goBooking('Boracay Luxury Villa')">
-          BOOK NOW
-        </button>
-      </div>
-    </div>
-
-    <!-- VILLA 2 -->
-    <div class="villa-card" onclick="openVilla('El Nido')">
-      <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80">
-
-      <div class="villa-info">
-        <h3>El Nido Private Pool Villa</h3>
-        <p class="villa-location">El Nido, Palawan</p>
-        <p class="villa-pax">👥 Good for 2–4 guests</p>
-        <h4 class="villa-price">₱15,000 <span>/ night</span></h4>
-        <span class="villa-rating">⭐⭐⭐⭐⭐</span>
-
-        <button class="book-btn"
-        onclick="goBooking('El Nido Private Pool Villa')">
-          BOOK NOW
-        </button>
-      </div>
-    </div>
-
-    <!-- VILLA 3 -->
-    <div class="villa-card" onclick="openVilla('Coron')">
-      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80">
-
-      <div class="villa-info">
-        <h3>Coron Cliffside Villa</h3>
-        <p class="villa-location">Coron, Palawan</p>
-        <p class="villa-pax">👥 Good for 2–4 guests</p>
-        <h4 class="villa-price">₱18,000 <span>/ night</span></h4>
-        <span class="villa-rating">⭐⭐⭐⭐⭐</span>
-
-        <button class="book-btn"
-        onclick="goBooking('Coron Cliffside Villa')">
-          BOOK NOW
-        </button>
-      </div>
-    </div>
-
-    <!-- VILLA 4 -->
-    <div class="villa-card" onclick="openVilla('Cebu')">
-      <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80">
-
-      <div class="villa-info">
-        <h3>Cebu Infinity Pool Villa</h3>
-        <p class="villa-location">Cebu City</p>
-        <p class="villa-pax">👥 Good for 4–8 guests</p>
-        <h4 class="villa-price">₱14,500 <span>/ night</span></h4>
-        <span class="villa-rating">⭐⭐⭐⭐⭐</span>
-
-        <button class="book-btn"
-        onclick="goBooking('Cebu Infinity Pool Villa')">
-          BOOK NOW
-        </button>
-      </div>
-    </div>
-
-    <!-- VILLA 5 -->
-    <div class="villa-card" onclick="openVilla('Siargao')">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80">
-
-      <div class="villa-info">
-        <h3>Siargao Surf Villa</h3>
-        <p class="villa-location">Siargao Island</p>
-        <p class="villa-pax">👥 Good for 2–4 guests</p>
-        <h4 class="villa-price">₱10,500 <span>/ night</span></h4>
-        <span class="villa-rating">⭐⭐⭐⭐⭐</span>
-
-        <button class="book-btn"
-        onclick="goBooking('Siargao Surf Villa')">
-          BOOK NOW
-        </button>
-      </div>
-    </div>
-
+    <button class="book-btn" onclick="goBooking('Boracay Luxury Villa')">
+      BOOK NOW
+    </button>
   </div>
+</div>
+
+
+<!-- VILLA 2 -->
+<div class="villa-card" data-location="el nido" onclick="openVilla('El Nido')">
+  <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80">
+  <div class="villa-info">
+    <h3>El Nido Private Pool Villa</h3>
+    <p class="villa-location">El Nido, Palawan</p>
+    <p class="villa-pax">👥 Good for 2–4 guests</p>
+    <h4 class="villa-price">₱15,000 <span>/ night</span></h4>
+    <span class="villa-rating">⭐⭐⭐⭐⭐</span>
+
+    <button class="book-btn" onclick="goBooking('El Nido Private Pool Villa')">
+      BOOK NOW
+    </button>
+  </div>
+</div>
+
+
+<!-- VILLA 3 -->
+<div class="villa-card" data-location="coron" onclick="openVilla('Coron')">
+  <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80">
+  <div class="villa-info">
+    <h3>Coron Cliffside Villa</h3>
+    <p class="villa-location">Coron, Palawan</p>
+    <p class="villa-pax">👥 Good for 2–4 guests</p>
+    <h4 class="villa-price">₱18,000 <span>/ night</span></h4>
+    <span class="villa-rating">⭐⭐⭐⭐⭐</span>
+
+    <button class="book-btn" onclick="goBooking('Coron Cliffside Villa')">
+      BOOK NOW
+    </button>
+  </div>
+</div>
+
+
+<!-- VILLA 4 -->
+<div class="villa-card" data-location="cebu" onclick="openVilla('Cebu')">
+  <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80">
+  <div class="villa-info">
+    <h3>Cebu Infinity Pool Villa</h3>
+    <p class="villa-location">Cebu City</p>
+    <p class="villa-pax">👥 Good for 4–8 guests</p>
+    <h4 class="villa-price">₱14,500 <span>/ night</span></h4>
+    <span class="villa-rating">⭐⭐⭐⭐⭐</span>
+
+    <button class="book-btn" onclick="goBooking('Cebu Infinity Pool Villa')">
+      BOOK NOW
+    </button>
+  </div>
+</div>
+
+
+<!-- VILLA 5 -->
+<div class="villa-card" data-location="siargao" onclick="openVilla('Siargao')">
+  <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80">
+  <div class="villa-info">
+    <h3>Siargao Surf Villa</h3>
+    <p class="villa-location">Siargao Island</p>
+    <p class="villa-pax">👥 Good for 2–4 guests</p>
+    <h4 class="villa-price">₱10,500 <span>/ night</span></h4>
+    <span class="villa-rating">⭐⭐⭐⭐⭐</span>
+
+    <button class="book-btn" onclick="goBooking('Siargao Surf Villa')">
+      BOOK NOW
+    </button>
+  </div>
+</div>
 
 </section>
 
