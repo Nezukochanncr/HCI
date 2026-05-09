@@ -52,7 +52,11 @@
     </section>
 
   </header>
-
+  
+<div class="villa-card"
+     data-location="Tagaytay"
+     data-guests="6"
+     data-price="12500">
   <!-- SEARCH -->
   <section class="search-section">
 
@@ -60,7 +64,11 @@
 
     <div class="filters">
 
-      <input type="text" id="locationFilter" placeholder="Location">
+     <input
+  type="text"
+  id="locationFilter"
+  placeholder="Search location..."
+  onkeyup="filterVillas()">
 
       <select id="guestFilter">
         <option value="">Guests</option>
