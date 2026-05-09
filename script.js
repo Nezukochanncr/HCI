@@ -149,6 +149,40 @@ document.querySelectorAll(".book-btn").forEach(btn => {
   });
 });
 
+function openVilla(location){
+
+  const modal = document.createElement("div");
+  modal.className = "villa-modal";
+
+  modal.innerHTML = `
+    <div class="villa-box">
+      <h2>${location} Villa Details</h2>
+
+      <p><b>📍 Location:</b> ${location}, Philippines</p>
+
+      <h3>✨ Amenities</h3>
+      <ul>
+        <li>2–4 Pax Capacity</li>
+        <li>Private Pool / Beach Access</li>
+        <li>WiFi & TV</li>
+        <li>Air Conditioning</li>
+        <li>Bathroom & Kitchen</li>
+      </ul>
+
+      <h3>📜 Policy</h3>
+      <p>Non-refundable booking. Payment required upon reservation.</p>
+
+      <button onclick="closeVilla()">Close</button>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+}
+
+function closeVilla(){
+  document.querySelector(".villa-modal").remove();
+}
+
 // Villa Filter
 function filterVillas() {
   const input = document.getElementById("locationFilter").value.toLowerCase();
