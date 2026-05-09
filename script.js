@@ -35,6 +35,16 @@ function toggleChat(){
   chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
 }
 
+document.querySelectorAll(".heart").forEach(heart => {
+  heart.addEventListener("click", () => {
+    heart.classList.toggle("active");
+
+    const icon = heart.querySelector("i");
+    icon.classList.toggle("fa-regular");
+    icon.classList.toggle("fa-solid");
+  });
+});
+
 // simple chat reply (demo lang)
 function sendMessage(){
   const input = document.getElementById("userInput");
