@@ -1,36 +1,233 @@
 *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+  font-family:Arial;
 }
 
-.contact-container{
+body{
+  background:#f5f5f5;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:rgba(0,0,0,0.5);
+  z-index:1000;
+}
+
+.logo{
+  color:white;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  list-style:none;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+}
+
+.hamburger{
+  display:none;
+  color:white;
+  font-size:25px;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1200&auto=format&fit=crop') center/cover;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+  position:relative;
+  color:white;
+}
+
+.hero-content h1{
+  font-size:60px;
+  margin-bottom:20px;
+}
+
+.btn{
+  background:gold;
+  color:black;
+  padding:12px 30px;
+  border-radius:30px;
+  text-decoration:none;
+}
+
+/* SECTION */
+.section{
+  padding:100px 8%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:40px;
+  color:#012b45;
+}
+
+/* SEARCH */
+.search-section{
+  padding:60px 8%;
+  background:#012b45;
+  color:white;
+  text-align:center;
+}
+
+.filters{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.filters input,
+.filters select,
+.filters button{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+}
+
+.filters button{
+  background:gold;
+  cursor:pointer;
+}
+
+/* VILLAS */
+.villa-container{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
 }
 
+.villa-card{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.villa-card:hover{
+  transform:translateY(-10px);
+}
+
+.villa-card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.villa-info{
+  padding:20px;
+}
+
+.villa-info button{
+  margin-top:15px;
+  background:#012b45;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:20px;
+}
+
+/* GALLERY */
+.gallery-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.gallery-img{
+  width:100%;
+  border-radius:15px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.gallery-img:hover{
+  transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+.lightbox{
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+}
+
+.lightbox-img{
+  width:80%;
+}
+
+.close{
+  position:absolute;
+  top:30px;
+  right:40px;
+  color:white;
+  font-size:40px;
+  cursor:pointer;
+}
+
+/* BOOKING */
+.booking form,
 .contact-form{
   display:flex;
   flex-direction:column;
   gap:15px;
+  max-width:500px;
+  margin:auto;
 }
 
-.map iframe{
-  width:100%;
-  min-height:300px;
-  border:none;
-  border-radius:20px;
+.booking input,
+.booking button,
+.contact-form input,
+.contact-form textarea,
+.contact-form button{
+  padding:15px;
+  border-radius:10px;
+  border:1px solid #ccc;
 }
 
-.socials{
-  text-align:center;
-  margin-top:30px;
+.booking button,
+.contact-form button{
+  background:#012b45;
+  color:white;
 }
 
-.socials i{
-  font-size:25px;
-  margin:0 10px;
-  color:#012b45;
-}
-
+/* FOOTER */
 footer{
   background:#012b45;
   color:white;
@@ -38,33 +235,11 @@ footer{
   padding:20px;
 }
 
-.floating-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:gold;
-  color:black;
-  padding:15px 20px;
-  border-radius:30px;
-  text-decoration:none;
-  z-index:1000;
-}
-
+/* MOBILE */
 @media(max-width:768px){
 
   .nav-links{
-    position:absolute;
-    top:80px;
-    right:-100%;
-    flex-direction:column;
-    background:#012b45;
-    width:250px;
-    padding:20px;
-    transition:0.3s;
-  }
-
-  .nav-links.active{
-    right:0;
+    display:none;
   }
 
   .hamburger{
@@ -75,7 +250,4 @@ footer{
     font-size:40px;
   }
 
-  .contact-container{
-    grid-template-columns:1fr;
-  }
 }
