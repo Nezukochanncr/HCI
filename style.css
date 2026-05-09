@@ -219,6 +219,48 @@ body{
   cursor:pointer;
 }
 
+
+.villa-modal{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+}
+
+.villa-box{
+  background:white;
+  padding:25px;
+  width:90%;
+  max-width:500px;
+  border-radius:15px;
+}
+
+.villa-box h2{
+  color:#012b45;
+}
+
+.villa-box ul{
+  padding-left:20px;
+}
+
+.villa-box button{
+  margin-top:15px;
+  padding:10px 15px;
+  background:#012b45;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
 /* Amenities */
 .amenities-container{
   display:grid;
@@ -244,6 +286,7 @@ body{
   margin-bottom:15px;
   color:gold;
 }
+
 
 /* Gallery */
 .gallery-container{
@@ -383,6 +426,27 @@ footer{
   z-index:1000;
 }
 
+.back-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#012b45;
+  color:white;
+  padding:12px 25px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+  transition:0.3s;
+  z-index:9999;
+}
+
+.back-btn:hover{
+  background:gold;
+  color:#012b45;
+  transform:scale(1.05);
+}
+
 /* CHATBOT BUTTON */
 .chatbot-btn{
   position:fixed;
@@ -441,6 +505,21 @@ footer{
   padding:8px;
   border-radius:10px;
   margin:5px 0;
+}
+
+.villa-display{
+  text-align:center;
+  margin:30px 0;
+}
+
+.villa-display h3{
+  font-size:24px;
+  color:#012b45;
+  background:white;
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
 .villa-modal{
@@ -527,6 +606,99 @@ footer{
   margin:0;
   color:#333;
 }
+
+/* SUCCESS PAGE */
+.success-container{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200') center/cover no-repeat;
+}
+
+.success-box{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  max-width:450px;
+}
+
+.checkmark{
+  width:70px;
+  height:70px;
+  background:gold;
+  color:#012b45;
+  font-size:35px;
+  font-weight:bold;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto 20px;
+}
+
+.success-box h1{
+  color:#012b45;
+  margin-bottom:10px;
+}
+
+.success-box p{
+  color:#555;
+  margin-bottom:10px;
+}
+
+.email-note{
+  font-size:14px;
+  color:#333;
+}
+
+.home-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  background:#012b45;
+  color:white;
+  text-decoration:none;
+  border-radius:25px;
+  transition:0.3s;
+}
+
+.home-btn:hover{
+  background:gold;
+  color:#012b45;
+}
+
+.loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(1,43,69,0.95);
+  color:white;
+
+  display:none;
+
+  justify-content:center;
+  align-items:center;
+
+  font-size:28px;
+  z-index:9999;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* Responsive */
 @media(max-width:768px){
 
