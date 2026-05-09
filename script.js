@@ -99,29 +99,56 @@ setInterval(showTestimonials, 3000);
 // Villa Filter
 function filterVillas(){
 
-  const location = document.getElementById("locationFilter").value.toLowerCase();
-  const guests = document.getElementById("guestFilter").value;
-  const price = document.getElementById("priceFilter").value;
+  const locationInput = document
+    .getElementById("locationFilter")
+    .value
+    .toLowerCase();
+
+  const guestInput = document
+    .getElementById("guestFilter")
+    .value;
+
+  const priceInput = document
+    .getElementById("priceFilter")
+    .value;
 
   const villas = document.querySelectorAll(".villa-card");
 
   villas.forEach(villa => {
 
     const villaLocation = villa.dataset.location.toLowerCase();
-    const villaGuests = villa.dataset.guests;
-    const villaPrice = villa.dataset.price;
+    const villaGuests = parseInt(villa.dataset.guests);
+    const villaPrice = parseInt(villa.dataset.price);
+
+    // 👉 ADD NAME SEARCH
+    const villaName = villa.querySelector("h3")
+      .textContent
+      .toLowerCase();
 
     let show = true;
 
-    if(location && !villaLocation.includes(location)){
+    // LOCATION OR NAME SEARCH
+    if (
+      locationInput !== "" &&
+      !villaLocation.includes(locationInput) &&
+      !villaName.includes(locationInput)
+    ) {
       show = false;
     }
 
-    if(guests && villaGuests !== guests){
+    // GUEST FILTER
+    if (
+      guestInput !== "" &&
+      villaGuests < parseInt(guestInput)
+    ) {
       show = false;
     }
 
-    if(price && villaPrice < price){
+    // PRICE FILTER
+    if (
+      priceInput !== "" &&
+      villaPrice < parseInt(priceInput)
+    ) {
       show = false;
     }
 
