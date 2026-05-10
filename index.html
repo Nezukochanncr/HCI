@@ -244,33 +244,60 @@
 
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials section">
-    <h2 class="section-title">Guest Reviews</h2>
+  <!-- TESTIMONIALS -->
+<section class="testimonials section" id="reviews">
 
-    <div class="testimonial-slider">
+  <h2 class="section-title">Guest Reviews</h2>
 
-      <div class="testimonial active">
-        <p>"Amazing villa and relaxing atmosphere!"</p>
-        <h4>- Sophia</h4>
-      </div>
+  <div class="testimonial-wrapper">
 
-      <div class="testimonial">
-        <p>"The private pool was beautiful and clean."</p>
-        <h4>- Daniel</h4>
-      </div>
-
-      <div class="testimonial">
-        <p>"Perfect vacation spot for families."</p>
-        <h4>- Angela</h4>
-      </div>
-
+    <div class="testimonial active">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Amazing villa and relaxing atmosphere! Everything was clean and perfect."</p>
+      <h4>- Sophia</h4>
     </div>
-  </section>
 
+    <div class="testimonial">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"The private pool was beautiful and the staff were very accommodating."</p>
+      <h4>- Daniel</h4>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Perfect vacation spot for families. We will definitely come back!"</p>
+      <h4>- Angela</h4>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Super relaxing stay! The villa looks exactly like the photos."</p>
+      <h4>- Mark</h4>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Very clean, luxurious, and worth every peso. Highly recommended!"</p>
+      <h4>- Jessica</h4>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Best private pool experience we had in the Philippines!"</p>
+      <h4>- Ryan</h4>
+    </div>
+
+  </div>
+
+</section>
   <!-- CONTACT -->
   <section class="contact section" id="contact">
-    <h2 class="section-title">Contact Us</h2>
+    <h2 class="section-title">📞 24/7 Customer Support</h2>
 
+    
+<p class="support-desc">
+    Need help? Our support team is always available to assist you with booking, payment, and inquiries.
+  </p>
     <div class="contact-container">
 
 <div class="contact-details">
@@ -287,7 +314,7 @@
 
   <div class="contact-item">
     <i class="fa-solid fa-envelope"></i>
-    <p>Email: <a href="mailto:azurecovevillas@gmail.com">azurecovevillas@gmail.com</a></p>
+    <p>Email: <a href="mailto:support@azurecovevillas.com">support@azurecovevillas.com</a></p>
   </div>
 
 </div>
@@ -316,6 +343,29 @@
 
 </div>
   </section>
+  
+
+  <div class="villa-modal" id="villaModal" style="display:none;">
+  <div class="villa-box">
+    <button class="close-modal" onclick="closeVilla()">×</button>
+    
+    <div class="villa-slider">
+      <img id="modalImg" src="" alt="Villa Image">
+    </div>
+
+    <h2 id="modalTitle">Villa Name</h2>
+    <div class="villa-details">
+      <p id="modalLocation"></p>
+      <ul id="modalAmenities">
+        <li>Private Pool</li>
+        <li>WiFi</li>
+        <li>Kitchen</li>
+        <li>Air-conditioned</li>
+      </ul>
+    </div>
+    <button class="modal-book-btn">Book This Villa</button>
+  </div>
+</div>
 
   <!-- FOOTER -->
   <footer>
