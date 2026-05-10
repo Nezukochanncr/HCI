@@ -118,107 +118,159 @@ document.querySelectorAll(".book-btn").forEach(btn => {
 });
 
 
-function openVilla(location){
 
+let currentImages = [];
+let currentIndex = 0;
+
+function openVilla(location) {
   const modal = document.createElement("div");
   modal.className = "villa-modal";
 
-  let details = "";
-
-  if(location === "Boracay"){
-    details = `
-      📍 Beachfront, Boracay
-      <br><br>
-      <b>Featured Amenities:</b>
-      <ul>
-        <li>36 m² / 388 ft²</li>
-        <li>2 Single Beds</li>
-        <li>Private Pool</li>
-        <li>WiFi & Flat Screen TV</li>
-        <li>Air Conditioning</li>
-      </ul>
-      <p><b>Policy:</b> Non-refundable booking</p>
-    `;
-  }
-
-  else if(location === "El Nido"){
-    details = `
-      📍 El Nido, Palawan
-      <br><br>
-      <b>Featured Amenities:</b>
-      <ul>
-        <li>Ocean View Villa</li>
-        <li>Private Infinity Pool</li>
-        <li>2–4 Pax</li>
-        <li>Luxury Bathroom</li>
-        <li>WiFi & Kitchen</li>
-      </ul>
-      <p><b>Policy:</b> Book & Pay Now</p>
-    `;
-  }
-
-  else if(location === "Coron"){
-    details = `
-      📍 Coron, Palawan
-      <br><br>
-      <b>Featured Amenities:</b>
-      <ul>
-        <li>Cliffside Villa</li>
-        <li>Sea View Balcony</li>
-        <li>2–4 Pax</li>
-        <li>Hot Shower</li>
-        <li>Air Conditioning</li>
-      </ul>
-      <p><b>Policy:</b> Non-refundable</p>
-    `;
-  }
-
-  else if(location === "Cebu"){
-    details = `
-      📍 Cebu City
-      <br><br>
-      <b>Featured Amenities:</b>
-      <ul>
-        <li>Infinity Pool</li>
-        <li>Family Villa (4–8 Pax)</li>
-        <li>Kitchen & Dining Area</li>
-        <li>WiFi & TV</li>
-      </ul>
-      <p><b>Policy:</b> Free cancellation 24h</p>
-    `;
-  }
-
-  else if(location === "Siargao"){
-    details = `
-      📍 Siargao Island
-      <br><br>
-      <b>Featured Amenities:</b>
-      <ul>
-        <li>Surf View Villa</li>
-        <li>2–4 Pax</li>
-        <li>Outdoor Lounge</li>
-        <li>WiFi & AC</li>
-      </ul>
-      <p><b>Policy:</b> Book & Pay Now</p>
-    `;
-  }
+  // Gumawa tayo ng simpleng listahan ng amenities base sa location
+  const amenitiesList = ["Private Pool", "WiFi", "Kitchen", "Air-conditioned"];
 
   modal.innerHTML = `
     <div class="villa-box">
+      <button class="close-modal" onclick="closeVilla()">×</button>
+      
       <h2>${location} Villa Details</h2>
-      <div>${details}</div>
 
-      <br>
-      <button onclick="closeVilla()">Close</button>
+      <div class="slider">
+        <button class="prev-btn" onclick="prevImg()">❮</button>
+        <img id="sliderImg" src="" onclick="zoomImage(this)" alt="Villa photo">
+        <button class="next-btn" onclick="nextImg()">❯</button>
+      </div>
+
+      <div class="villa-details-text">
+          <p><b>📍 Location:</b> ${location}, Philippines</p>
+          <h3>✨ Amenities</h3>
+          <ul>
+            ${amenitiesList.map(a => `<li>${a}</li>`).join('')}
+          </ul>
+      </div>
+
+      <button class="book-modal-btn" onclick="goBooking('${location} Villa')">
+        Book This Villa
+      </button>
     </div>
   `;
 
   document.body.appendChild(modal);
+  
+  // Tawagin ang loader para sa images
+  loadVillaData(location);
 }
 
 function closeVilla(){
-  document.querySelector(".villa-modal").remove();
+  const modal = document.querySelector(".villa-modal");
+
+  if(modal){
+    modal.remove();
+  }
 }
+
+function loadVillaData(location){
+
+  let data = {
+    Boracay: [
+    "https://images.unsplash.com/photo-1553195029-754fbd369560",
+    "https://images.unsplash.com/photo-1708195559744-c2b3e60dbe27",
+    "https://images.unsplash.com/photo-1542213493895-edf5b94f5a96",
+    "https://images.unsplash.com/photo-1612231393559-9414dc467ef7",
+    "https://images.unsplash.com/photo-1609602126247-4ab7188b4aa1",
+    ],
+
+    "El Nido": [
+      "https://images.unsplash.com/photo-1583685133115-90748ccbe274",
+      "https://images.unsplash.com/photo-1605538032432-a9f0c8d9baac",
+      "https://images.unsplash.com/photo-1654482278660-14a8cfd5589d",
+      "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734",
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd",
+    ],
+
+    Coron: [
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+      "https://images.unsplash.com/photo-1631049035182-249067d7618e",
+      "https://images.unsplash.com/photo-1631048730670-ff5cd0d08f15",
+      "https://images.unsplash.com/photo-1631048835236-a1c27baeff2c",
+      "https://images.unsplash.com/photo-1631048730558-10cd324e0873",
+    ],
+
+    Cebu: [
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+      "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8",
+    ],
+
+    Siargao: [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a"
+    ]
+  };
+
+currentImages = data[location] || data["Boracay"]; // Fallback sa Boracay kung walang mahanap
+  currentIndex = 0;
+
+  const imgElement = document.getElementById("sliderImg");
+  if (imgElement && currentImages.length > 0) {
+    imgElement.src = currentImages[0];
+  }
+}
+
+
+function nextImg(){
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  document.getElementById("sliderImg").src = currentImages[currentIndex];
+}
+
+function prevImg(){
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById("sliderImg").src = currentImages[currentIndex];
+}
+
+
+function zoomImage(img){
+
+  const zoom = document.createElement("div");
+  zoom.className = "zoom-view";
+
+  zoom.innerHTML = `<img src="${img.src}">`;
+
+  zoom.onclick = () => zoom.remove();
+
+  document.body.appendChild(zoom);
+}
+
+// Ipalit mo ito sa loob ng openVilla function mo
+modal.innerHTML = `
+    <div class="villa-box">
+      <button class="close-modal" onclick="closeVilla()">×</button>
+      
+      <h2>${location} Villa Details</h2>
+
+      <div class="slider">
+        <button class="prev-btn" onclick="prevImg()">❮</button>
+        
+        <img id="sliderImg" src="${villa.images[0]}" onclick="zoomImage(this)" alt="Villa photo">
+        
+        <button class="next-btn" onclick="nextImg()">❯</button>
+      </div>
+
+      <div class="villa-details-text">
+          <p><b>📍 Location:</b> ${location}, Philippines</p>
+          <h3>✨ Amenities</h3>
+          <ul>
+            ${villa.amenities.map(a => `<li>${a}</li>`).join('')}
+          </ul>
+      </div>
+
+      <button class="book-modal-btn" onclick="goBooking('${location} Villa')">
+        Book This Villa
+      </button>
+    </div>
+  `;
+
 
 // Villa Filter
 function filterVillas() {
